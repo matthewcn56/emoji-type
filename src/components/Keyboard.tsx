@@ -81,22 +81,33 @@ export default function Keyboard(props: KeyboardProps) {
     };
 
     return (
-        <div className="keyboard-holder">
-            <div className="keyboard"
-                onPointerDown={handlePointerDown}
-                onPointerUp={handlePointerUp}
-                onPointerLeave={handlePointerLeave}
-            >
-                <div />
-                <div>{upLetter}</div>
-                <div />
+        <div className="keyboard-holder"
+            onContextMenu={(e) => {
+                //this prevents righ-click contentmenue event on long tab to pop up the menu
+                e.preventDefault();
+                e.stopPropagation();
+            }} >
+            <div>{upLetter}</div>
+            <div className="keyboard-row">
                 <div>{leftLetter}</div>
-                <div />
+                <div className="keyboard"
+                    onPointerDown={handlePointerDown}
+                    onPointerUp={handlePointerUp}
+                    onPointerLeave={handlePointerLeave}
+                >
+                    <div />
+                    <div>&uarr;</div>
+                    <div />
+                    <div>&larr;</div>
+                    <div className="click-icon">&bull;</div>
+                    <div>&rarr;</div>
+                    <div />
+                    <div>&darr;</div>
+                    <div />
+                </div>
                 <div>{rightLetter}</div>
-                <div />
-                <div>{downLetter}</div>
-                <div />
             </div>
+            <div>{downLetter}</div>
 
         </div>
     )

@@ -1,5 +1,9 @@
 .App {
+  display: flex;
+  justify-content: center;
   text-align: center;
+  background-color: #fdeeee;
+  width: 100vw;
 }
 
 .App-logo {
@@ -14,12 +18,12 @@
 }
 
 .App-header {
-  background-color: #fdeeee;
   min-height: 100vh;
-  width: 100vw;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
@@ -43,10 +47,9 @@
   display: flex;
   justify-content: center;
   align-content: center;
-}
-
-.info {
-  width: 80%;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .backspace {
@@ -62,11 +65,20 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .text-display {
   background-color: white;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   color: black;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+pre {
+  white-space: pre-wrap;
 }

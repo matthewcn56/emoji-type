@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Keyboard from './components/Keyboard';
 import { letters } from './data';
 import './App.css';
+import Backspace from './components/Backspace';
+import Space from './components/Space';
 
 //100px by 100px is exactly 2cm by 2cm on my laptop
 function App() {
@@ -25,32 +27,32 @@ function App() {
   };
 
   const removeLetter = () => {
-    setText(text.substring(0, text.length - 1));
+    setText(currText => currText.substring(0, currText.length - 1));
   }
 
   const addSpace = () => {
-    setText(text + " ");
+    setText(currText => currText + " ");
   }
 
   return (
 
-    < div className="App" >
-      <header className="App-header">
+    < div className="App">
+      <div className="App-header">
         <h1>Tiny Type</h1>
         <p className='info'>
-          Tap on letter wheels to cycle between letters, and swipe in direction of letter you want!
+          Swipe in direction of the letter you want, or tap the box to cycle between letters!
         </p>
-        <p className='text-display'><pre>{text}</pre></p>
+        <p className='text-display'><pre>{text ? text : " "}</pre></p>
 
         <div className='keyboard-display'>
           <Keyboard letters={letters[lettersState][0]} onClick={backwardState} addLetter={addLetter} />
           <Keyboard letters={letters[lettersState][1]} onClick={forwardState} addLetter={addLetter} />
         </div>
         <div className='keyboard-display'>
-          <div className='space' onPointerDown={(e) => addSpace()}>|_|</div>
-          <div className='backspace' onPointerDown={(e) => removeLetter()}>X</div>
+          <Space addSpace={addSpace} />
+          <Backspace removeLetter={removeLetter} />
         </div>
-      </header>
+      </div>
     </div >
   );
 }
