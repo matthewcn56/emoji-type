@@ -37,6 +37,12 @@ function App() {
 
     < div className="App" >
       <header className="App-header">
+        <h1>Tiny Type</h1>
+        <p className='info'>
+          Tap on letter wheel to cycle between letters, and swipe in direction of letter you want!
+        </p>
+        <p className='text-display'><pre>{text}</pre></p>
+
         <div className='keyboard-display'>
           <Keyboard letters={letters[lettersState][0]} onClick={backwardState} addLetter={addLetter} />
           <Keyboard letters={letters[lettersState][1]} onClick={forwardState} addLetter={addLetter} />
@@ -45,7 +51,6 @@ function App() {
           <div className='space' onPointerDown={(e) => addSpace()}>|_|</div>
           <div className='backspace' onPointerDown={(e) => removeLetter()}>X</div>
         </div>
-        <p className='text-display'><pre>{text}</pre></p>
       </header>
     </div >
   );

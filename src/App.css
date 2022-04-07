@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -35,10 +35,14 @@
 }
 
 .space {
-  background-color: #faa7a7;
+  background-color: #a7d7fa;
   height: 30px;
   width: 50px;
   margin: 10px;
+}
+
+.info {
+  width: 80%;
 }
 
 .backspace {
