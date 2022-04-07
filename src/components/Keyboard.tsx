@@ -5,11 +5,14 @@ import { Action, Coord, defaultCoord, determineAction } from "./KeyboardUtils";
 interface KeyboardProps {
     letters: string[]
     onClick: () => void
+    addLetter: (letter: string) => void
 }
 export default function Keyboard(props: KeyboardProps) {
     const [touchStart, setTouchStart] = useState(defaultCoord);
     const [touchEnd, setTouchEnd] = useState(defaultCoord);
     const [currAction, setCurrAction] = useState(Action.NONE);
+
+    const [upLetter, downLetter, leftLetter, rightLetter] = props.letters;
 
     //handle EndCoord Changes
     useEffect(() => {
@@ -20,6 +23,24 @@ export default function Keyboard(props: KeyboardProps) {
                     props.onClick();
                     return;
                 }
+                case Action.SWIPE_UP: {
+                    props.addLetter(upLetter);
+                    return;
+                }
+                case Action.SWIPE_DOWN: {
+                    props.addLetter(downLetter);
+                    return;
+                }
+                case Action.SWIPE_LEFT: {
+                    props.addLetter(leftLetter);
+                    return;
+                }
+                case Action.SWIPE_RIGHT: {
+                    props.addLetter(rightLetter);
+                    return;
+                }
+
+
             }
             setCurrAction(newAction);
             //console.log("Action detected!");
@@ -69,9 +90,17 @@ export default function Keyboard(props: KeyboardProps) {
                 onPointerUp={handlePointerUp}
                 onPointerLeave={handlePointerLeave}
             >
-                <p>{props.letters}</p>
+                <div />
+                <div>{upLetter}</div>
+                <div />
+                <div>{leftLetter}</div>
+                <div />
+                <div>{rightLetter}</div>
+                <div />
+                <div>{downLetter}</div>
+                <div />
             </div>
-            <div>Curr Action: {currAction}</div>
+
         </div>
     )
 

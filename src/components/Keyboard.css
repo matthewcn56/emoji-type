@@ -1,9 +1,20 @@
 .keyboard {
-    background-color: aliceblue;
-    height: 60px;
+    background-color: #744f9a;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 70px;
     width: 50px;
     touch-action: none;
     color: black;
+    font-size: 15px;
+    align-items: flex-start;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.keyboard>div {
+    vertical-align: top;
 }
 
 .keyboard-holder {
