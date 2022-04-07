@@ -1,0 +1,15 @@
+.keyboard {
+    background-color: aliceblue;
+    height: 60px;
+    width: 50px;
+    touch-action: none;
+    color: black;
+}
+
+.keyboard-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
