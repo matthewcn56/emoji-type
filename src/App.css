@@ -39,6 +39,10 @@
   height: 30px;
   width: 50px;
   margin: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .info {
@@ -54,6 +58,10 @@
   align-content: center;
   vertical-align: text-bottom;
   margin: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .text-display {

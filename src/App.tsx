@@ -38,7 +38,7 @@ function App() {
       <header className="App-header">
         <h1>Tiny Type</h1>
         <p className='info'>
-          Tap on letter wheel to cycle between letters, and swipe in direction of letter you want!
+          Tap on letter wheels to cycle between letters, and swipe in direction of letter you want!
         </p>
         <p className='text-display'><pre>{text}</pre></p>
 
