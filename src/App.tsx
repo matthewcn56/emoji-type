@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import Keyboard from './components/Keyboard';
 import { letters } from './data';
 import './App.css';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Keyboard.css";
-import { Action, Coord, defaultCoord, determineAction } from "./KeyboardUtils";
+import { Action, defaultCoord, determineAction } from "./KeyboardUtils";
 
 interface KeyboardProps {
     letters: string[]
@@ -10,8 +10,6 @@ interface KeyboardProps {
 export default function Keyboard(props: KeyboardProps) {
     const [touchStart, setTouchStart] = useState(defaultCoord);
     const [touchEnd, setTouchEnd] = useState(defaultCoord);
-    const [currAction, setCurrAction] = useState(Action.NONE);
-
     const [upLetter, downLetter, leftLetter, rightLetter] = props.letters;
 
     //handle EndCoord Changes
@@ -42,10 +40,9 @@ export default function Keyboard(props: KeyboardProps) {
 
 
             }
-            setCurrAction(newAction);
             //console.log("Action detected!");
         }
-
+        // eslint-disable-next-line
     }, [touchEnd]);
     const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
         const currTouchStartX = e.screenX;
