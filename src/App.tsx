@@ -40,7 +40,7 @@ function App() {
       <div className="App-header">
         <h1>Tiny Type</h1>
         <p className='info'>
-          Swipe in direction of the letter you want, or tap the box to cycle between letters!
+          Swipe in direction of the letter you want, or tap on one of the purple boxes to cycle between letters!
         </p>
         <p className='text-display'><pre>{text ? text : " "}</pre></p>
 
