@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Action, determineAction, determineCanvasAction, defaultCoord, Coord, CanvasAction } from "./KeyboardUtils";
+import { determineCanvasAction, defaultCoord, Coord, CanvasAction } from "./KeyboardUtils";
 import "./Canvas.css"
-import { getPositionOfLineAndCharacter } from "typescript";
+
 
 interface CanvasProps {
     onClick: () => void
@@ -17,7 +17,6 @@ export default function Canvas(props: CanvasProps) {
     const canvasRef = useRef<null | HTMLCanvasElement>(null);
     const canvasCtxRef = useRef<CanvasRenderingContext2D | null>(null);
     const [touchStart, setTouchStart] = useState(defaultCoord);
-    const [paint, setPaint] = useState(false);
     const [coords, setCoords] = useState<Coord[]>([]);
     const [touchEnd, setTouchEnd] = useState(defaultCoord);
 

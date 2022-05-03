@@ -181,14 +181,14 @@ export function DollarRecognizer() // constructor
 			}
 		}
 		var t1 = Date.now();
-		return (u == -1) ? new Result("NONE", 0.0, t1-t0) : new Result(this.Unistrokes[u].Name, useProtractor ? (1.0 - b) : (1.0 - b / HalfDiagonal), t1-t0);
+		return (u === -1) ? new Result("NONE", 0.0, t1-t0) : new Result(this.Unistrokes[u].Name, useProtractor ? (1.0 - b) : (1.0 - b / HalfDiagonal), t1-t0);
 	}
 	this.AddGesture = function(name, points)
 	{
 		this.Unistrokes[this.Unistrokes.length] = new Unistroke(name, points); // append new unistroke
 		var num = 0;
 		for (var i = 0; i < this.Unistrokes.length; i++) {
-			if (this.Unistrokes[i].Name == name)
+			if (this.Unistrokes[i].Name === name)
 				num++;
 		}
 		return num;
@@ -221,7 +221,7 @@ function Resample(points, n)
 		}
 		else D += d;
 	}
-	if (newpoints.length == n - 1) // somtimes we fall a rounding-error short of adding the last point, so add it if so
+	if (newpoints.length === n - 1) // somtimes we fall a rounding-error short of adding the last point, so add it if so
 		newpoints[newpoints.length] = new Point(points[points.length - 1].x, points[points.length - 1].y);
 	return newpoints;
 }
@@ -235,7 +235,7 @@ function RotateBy(points, radians) // rotates points around centroid
 	var c = Centroid(points);
 	var cos = Math.cos(radians);
 	var sin = Math.sin(radians);
-	var newpoints = new Array();
+	var newpoints = [];
 	for (var i = 0; i < points.length; i++) {
 		var qx = (points[i].x - c.x) * cos - (points[i].y - c.y) * sin + c.x
 		var qy = (points[i].x - c.x) * sin + (points[i].y - c.y) * cos + c.y;
@@ -246,7 +246,7 @@ function RotateBy(points, radians) // rotates points around centroid
 function ScaleTo(points, size) // non-uniform scale; assumes 2D gestures (i.e., no lines)
 {
 	var B = BoundingBox(points);
-	var newpoints = new Array();
+	var newpoints = [];
 	for (var i = 0; i < points.length; i++) {
 		var qx = points[i].x * (size / B.Width);
 		var qy = points[i].y * (size / B.Height);
@@ -257,7 +257,7 @@ function ScaleTo(points, size) // non-uniform scale; assumes 2D gestures (i.e., 
 function TranslateTo(points, pt) // translates points' centroid
 {
 	var c = Centroid(points);
-	var newpoints = new Array();
+	var newpoints = [];
 	for (var i = 0; i < points.length; i++) {
 		var qx = points[i].x + pt.x - c.x;
 		var qy = points[i].y + pt.y - c.y;
@@ -268,15 +268,15 @@ function TranslateTo(points, pt) // translates points' centroid
 function Vectorize(points) // for Protractor
 {
 	var sum = 0.0;
-	var vector = new Array();
+	var vector = [];
 	for (var i = 0; i < points.length; i++) {
 		vector[vector.length] = points[i].x;
 		vector[vector.length] = points[i].y;
 		sum += points[i].x * points[i].x + points[i].y * points[i].y;
 	}
 	var magnitude = Math.sqrt(sum);
-	for (var i = 0; i < vector.length; i++)
-		vector[i] /= magnitude;
+	for (var j = 0; j < vector.length; j++)
+		vector[j] /= magnitude;
 	return vector;
 }
 function OptimalCosineDistance(v1, v2) // for Protractor
