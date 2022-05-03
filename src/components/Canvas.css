@@ -1,0 +1,30 @@
+.canvas {
+    background-color: #744f9a;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 70px;
+    width: 50px;
+    touch-action: none;
+    color: black;
+    align-items: flex-start;
+}
+
+.canvas-holder {
+    background-color: white;
+    height: 70px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 15px;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    font-family: 'Roboto Mono', monospace;
+    touch-action: none;
+}

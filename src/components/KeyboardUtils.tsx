@@ -7,6 +7,14 @@ export enum Action {
     NONE = "NONE"
 }
 
+export enum CanvasAction {
+    CLICK = "CLICK",
+    SMILEY = "SMILEY",
+    FROWNY = "FROWNY",
+    ANGRY = "ANGRY",
+    NONE = "NONE"
+}
+
 export function determineAction(startX: number, startY: number, endX: number, endY: number): Action {
     const xDiff = endX - startX;
     const absXDiff = Math.abs(xDiff);
@@ -42,6 +50,25 @@ export function determineAction(startX: number, startY: number, endX: number, en
     }
 
     else return Action.NONE;
+}
+
+export function determineCanvasAction(coords: Coord[]): CanvasAction {
+    const coordsLen = coords.length;
+    console.log(coordsLen);
+    const endX = coords[coordsLen - 1].x;
+    const endY = coords[coordsLen - 1].y;
+    const startX = coords[0].x;
+    const startY = coords[0].y;
+    const xDiff = endX - startX;
+    const absXDiff = Math.abs(xDiff);
+    const yDiff = endY - startY;
+    const absYDiff = Math.abs(yDiff);
+    //determine click
+    if (absXDiff <= 5 && absYDiff <= 5) {
+        console.log("Click detected")
+        return CanvasAction.CLICK;
+    }
+    else return CanvasAction.NONE;
 }
 
 export interface Coord {

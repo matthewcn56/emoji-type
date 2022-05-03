@@ -67,7 +67,7 @@ export default function Keyboard(props: KeyboardProps) {
     };
 
     const handlePointerLeave = (e: React.PointerEvent<HTMLDivElement>) => {
-        //only if key is clicked
+        //only if key is clicked 
         if (e.buttons === 1 || e.buttons === 3) {
             const currTouchEndX = e.screenX;
             const currTouchEndY = e.screenY;
