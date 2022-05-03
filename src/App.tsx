@@ -4,6 +4,7 @@ import { letters } from './data';
 import './App.css';
 import Backspace from './components/Backspace';
 import Canvas from './components/Canvas';
+import ToggleCanvas from './components/ToggleCanvas';
 import Space from './components/Space';
 
 //100px by 100px is exactly 2cm by 2cm on my laptop
@@ -26,7 +27,8 @@ function App() {
   }
 
   const addLetter = (letter: string) => {
-    setText(text + letter);
+    console.log(text);
+    setText(text => (text + letter));
   };
 
   const removeLetter = () => {
@@ -45,19 +47,23 @@ function App() {
 
     < div className="App">
       <div className="App-header">
-        <h1>Tiny Type</h1>
+        <h1>Emoji Type</h1>
         <p className='info'>
-          Swipe in direction of the letter you want, or tap on the right purple boxes to cycle between letters, or toggle the left box!
+          Swipe in the direction of the letter you want, or tap on the purple boxes to cycle between letters, or make emojis with the emoji button!
         </p>
+        <div>
+          Possible emojis: 🖕, 😁, 😦, 🤩, 🔪
+
+        </div>
         <p className='text-display'><pre>{text ? text : " "}</pre></p>
 
         <div className='keyboard-display'>
           {
             displayCanvas ?
-              <Canvas onClick={() => toggleCanvas()} />
+              <Canvas onClick={() => toggleCanvas()} addLetter={addLetter} />
               : <Keyboard
                 letters={letters[lettersState][0]}
-                onClick={() => toggleCanvas()}
+                onClick={backwardState}
                 addLetter={addLetter}
               />
           }
@@ -65,6 +71,7 @@ function App() {
         </div>
         <div className='keyboard-display'>
           <Space addSpace={addSpace} />
+          <ToggleCanvas onClick={toggleCanvas} />
           <Backspace removeLetter={removeLetter} />
         </div>
       </div>

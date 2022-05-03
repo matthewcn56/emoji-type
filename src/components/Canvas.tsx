@@ -5,6 +5,7 @@ import { getPositionOfLineAndCharacter } from "typescript";
 
 interface CanvasProps {
     onClick: () => void
+    addLetter: (letter: string) => void
 }
 
 function elementScale(el: HTMLCanvasElement) {
@@ -25,7 +26,7 @@ export default function Canvas(props: CanvasProps) {
         let ctx = canvasCtxRef.current;
         if (ctx) {
             const newCoord = getCanvasCoord(e);
-            console.log(newCoord);
+            //console.log(newCoord);
             setCoords(prevCoords => [...prevCoords, newCoord]);
             //console.log(coords.length);
         }
@@ -34,7 +35,7 @@ export default function Canvas(props: CanvasProps) {
     function getCanvasCoord(e: React.PointerEvent<HTMLCanvasElement>): Coord {
         let ctx = canvasCtxRef.current;
         if (ctx) {
-            console.log("Top is: ", ctx.canvas.getBoundingClientRect().top);
+            //console.log("Top is: ", ctx.canvas.getBoundingClientRect().top);
             const rect = ctx.canvas.getBoundingClientRect();
             const scale = elementScale(ctx.canvas);
             return ({
@@ -107,7 +108,7 @@ export default function Canvas(props: CanvasProps) {
     useEffect(() => {
         //listen for touchStart and touchEnd!
         if (touchStart.x !== defaultCoord.x) {
-            const newAction = determineCanvasAction(coords);
+            const newAction = determineCanvasAction(coords, props.addLetter);
             switch (newAction) {
                 case CanvasAction.CLICK: {
                     props.onClick();

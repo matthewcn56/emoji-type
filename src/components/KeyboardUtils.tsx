@@ -1,3 +1,5 @@
+import { DollarRecognizer, makePoints } from "./OneDollarUtils";
+
 export enum Action {
     CLICK = "CLICK",
     SWIPE_UP = "SWIPE_UP",
@@ -11,7 +13,7 @@ export enum CanvasAction {
     CLICK = "CLICK",
     SMILEY = "SMILEY",
     FROWNY = "FROWNY",
-    ANGRY = "ANGRY",
+    STARS = "STARS",
     NONE = "NONE"
 }
 
@@ -52,9 +54,11 @@ export function determineAction(startX: number, startY: number, endX: number, en
     else return Action.NONE;
 }
 
-export function determineCanvasAction(coords: Coord[]): CanvasAction {
+export function determineCanvasAction(coords: Coord[], addLetter: (letter: string) => void) {
     const coordsLen = coords.length;
-    console.log(coordsLen);
+
+    //console.log(coordsLen);
+    console.log(coords);
     const endX = coords[coordsLen - 1].x;
     const endY = coords[coordsLen - 1].y;
     const startX = coords[0].x;
@@ -64,11 +68,18 @@ export function determineCanvasAction(coords: Coord[]): CanvasAction {
     const yDiff = endY - startY;
     const absYDiff = Math.abs(yDiff);
     //determine click
-    if (absXDiff <= 5 && absYDiff <= 5) {
+    if (absXDiff <= 5 && absYDiff <= 5 && coordsLen < 5) {
         console.log("Click detected")
         return CanvasAction.CLICK;
     }
-    else return CanvasAction.NONE;
+    const recognizer = new DollarRecognizer();
+    console.log("Coords is: ")
+    const pointCoords = makePoints(coords);
+    const recognizerResult = recognizer.Recognize(pointCoords).Name;
+    console.log(recognizerResult);
+    if (recognizerResult !== "NONE") {
+        addLetter(recognizerResult);
+    }
 }
 
 export interface Coord {

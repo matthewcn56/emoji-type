@@ -42,7 +42,7 @@
 .space {
   background-color: #a7d7fa;
   height: 30px;
-  width: 50px;
+  width: 33px;
   margin: 10px;
   font-size: 15px;
   display: flex;
@@ -56,7 +56,7 @@
 .backspace {
   background-color: red;
   height: 30px;
-  width: 50px;
+  width: 33px;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -73,11 +73,18 @@
 
 .text-display {
   background-color: white;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
   color: black;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+body {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 pre {
